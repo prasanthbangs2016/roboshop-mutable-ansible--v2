@@ -1,4 +1,5 @@
 - name: copy prometheus configuration
   ansible.builtin.template:
-    src: /opt/prometheus/prometheus.yml
+    src: prometheus.yml
+    dest: /opt/prometheus/prometheus.yml
   notify: Restart prometheus
