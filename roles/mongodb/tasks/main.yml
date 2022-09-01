@@ -1,0 +1,43 @@
+#- name: Import common role to set hostname
+#  ansible.builtin.import_role:
+#    name: common
+
+- name: copy mongodb repo file
+  ansible.builtin.copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+
+# yum install -y mongodb-org
+# systemctl enable mongod
+# systemctl start mongod
+
+- name: Install mongodb
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: installed
+
+- name: Update mongo config file
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Restart mongodb
+  ansible.builtin.systemd:
+    name: mongod
+    state: restarted
+    enabled: yes
+  
+- name: Download mongodb schema files
+  ansible.builtin.unarchive:
+    src: "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
+    dest: /tmp
+    remote_src: yes
+
+- name: Load schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/{{item}}.js"
+    idempotent: yes
+  loop:
+    - catalogue
+    - users

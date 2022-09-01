@@ -1,0 +1,83 @@
+#- name: Import common role to set hostname
+#  ansible.builtin.import_role:
+#    name: common
+
+- name: copy mysql repo file
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+# yum install -y mongodb-org
+# systemctl enable mongod
+# systemctl start mongod
+
+- name: Install mysql
+  ansible.builtin.yum:
+    name:
+     - mysql-community-server
+     - MySQL-python
+    state: installed
+
+- name: start mysql service
+  ansible.builtin.systemd:
+    name: mysqld
+    state: restarted
+    enabled: yes
+
+
+
+
+#- name: print mysql_log and decoding from encoded log
+  #debug:
+    #msg: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') | split(' ') | last }}"
+
+
+
+#- name: print
+  #debug:
+    #print "{{mysql_conn_status}}"
+
+- name: Handle the error
+  block:
+    - name: Get MySQL version to check the DB Connection
+      mysql_info:
+        login_user: root
+        login_password: "{{MYSQL_PASSWORD}}"
+        filter: version
+      register: mysql_conn_status
+
+  rescue:
+    - name: Load mysql log file
+      ansible.builtin.slurp:
+        src: /var/log/mysqld.log
+      register: mysql_log
+
+    - name: declare facts
+      ansible.builtin.set_fact:
+        DEFAULT_PASS: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') | split(' ') | last }}"
+
+    - name: change mysql password
+      ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{MYSQL_PASSWORD}}';" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASS}}"
+# once password is changed it wont come to rescue part
+
+- name: Check Validate plugin exists
+  ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -uroot -p{{MYSQL_PASSWORD}}
+  ignore_errors: yes
+
+- name: Download MySQL Schema files
+  ansible.builtin.unarchive:
+    src: "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
+    dest: /tmp
+    remote_src: yes
+
+- name: Load Schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target: /tmp/mysql-main/shipping.sql
+    login_user: root
+    login_password: "{{MYSQL_PASSWORD}}"
+
+
+
+

@@ -1,0 +1,56 @@
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=frontend -e HOSTS=FRONTEND -e ENV=dev roboshop.yml
+
+or
+
+
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=frontend -e HOSTS=localhost
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=frontend -e HOSTS=localhost -e ENV=dev
+
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=mongodb -e HOSTS=localhost
+
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=catalogue -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=redis -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=user -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=cart -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=mysql -e HOSTS=localhost -e MYSQL_PASSWORD=Roboshop@1 -e ENV=dev 
+
+
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "The PyMySQL (Python 2.7 and Python 3.X) or MySQL-python (Python 2.X) module is required."}
+
+sudo yum list all | grep mysql -i | grep python -i
+
+sudo yum install python36-PyMySQL.noarch
+
+====================================================================================================================================================
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e MYSQL_PASSWORD=Roboshop@1 -e ENV=dev 
+
+or
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e ENV=dev e MYSQL_PASSWORD=Roboshop@1 roboshop-full.yml
+
+ansible-playbook -e ansible_user=centos -e ansible_password=DevOps321 -e ENV=dev e MYSQL_PASSWORD=Roboshop@1 roboshop-full.yml
+
+=======================================================================================================================================================
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=shipping -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=rabbitmq -e RABBITMQ_PASSWORD=roboshop123 -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible roboshop.yml -e APP_COMPONENT_ROLE=payment -e RABBITMQ_PASSWORD=roboshop123 -e HOSTS=localhost -e ENV=dev
+
+
+
+
+
+ansible -i inv-roboshop all -m ping -e ansible_user=cento -e ansible_password=DevOps321
+
+ansible -i inv-roboshop roboshop-full.yml -e ansible_user=cento -e HOST=CART -e APP_COMPONENT_ROLE=cart -e ansible_password=DevOps321 -e ENV=dev
+
+ansible -i inv-roboshop roboshop-full.yml -e ansible_user=cento -e ansible_password=DevOps321 -e ENV=dev
