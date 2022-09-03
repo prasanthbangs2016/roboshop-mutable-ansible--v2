@@ -57,3 +57,5 @@ ansible -i inv-roboshop roboshop-full.yml -e ansible_user=cento -e ansible_passw
 
 
 ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=server
+
+ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=client
