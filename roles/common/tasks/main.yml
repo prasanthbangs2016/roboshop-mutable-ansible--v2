@@ -1,7 +1,7 @@
 - name: Set up hostname
   ansible.builtin.shell: set-hostname {{COMPONENT}}
 
-- name: install prometheus node exporter
+- name: Install prometheus node exporter
   ansible.builtin.include_role:
     name: prometheus
     tasks_from: client
