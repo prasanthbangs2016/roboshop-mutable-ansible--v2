@@ -6,7 +6,7 @@ groups:
         for: 1m
         labels:
           severity: critical
-        annotations:
-        #ignoring below 2 lines in ansible way
-          {% summary: "Instance Down - [{{ $labels.instance}}]" -%}
-          {% description: "Instance Down - [{{ $labels.instance}}]" -%}
+        annotations: {% raw %}
+          summary: "Instance Down - [{{ $labels.instance}}]" 
+          description: "Instance Down - [{{ $labels.instance}}]" {% endraw %}
+          #ignoring above 2 lines in ansible way
