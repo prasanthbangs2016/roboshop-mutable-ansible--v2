@@ -32,3 +32,9 @@
   ansible.builtin.systemd:
     name: alertmanager
     state: restarted
+
+- name: Wait for prometheus alert-manager to start
+  ansible.builtin.wait_for:
+    port: 9093
+    delay: 10 #wait for 30sec
+    timeout: 30 #stop waiting after 30sec that is a failure
