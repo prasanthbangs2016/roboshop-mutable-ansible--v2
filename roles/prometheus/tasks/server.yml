@@ -10,6 +10,7 @@
     dest: /opt/prometheus/alert_rules.yml
   notify: Restart prometheus
 
+
 - name: start prometheus
   ansible.builtin.systemd:
     name: prometheus
@@ -21,3 +22,13 @@
     port: 9090
     delay: 10 #wait for 30sec
     timeout: 30 #stop waiting after 30sec that is a failure
+
+- name: copy alerts manager configuration
+  ansible.builtin.template:
+    src: alert-manager.yml
+    dest: /opt/prometheus/alert-manager.yml
+
+- name: start prometheus
+  ansible.builtin.systemd:
+    name: alertmanager
+    state: restarted
