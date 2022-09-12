@@ -51,6 +51,7 @@ ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible ro
 
 
 
+
 ansible -i inv-roboshop all -m ping -e ansible_user=cento -e ansible_password=DevOps321
 
 ansible -i inv-roboshop roboshop-full.yml -e ansible_user=cento -e HOST=CART -e APP_COMPONENT_ROLE=cart -e ansible_password=DevOps321 -e ENV=dev
@@ -59,5 +60,6 @@ ansible -i inv-roboshop roboshop-full.yml -e ansible_user=cento -e ansible_passw
 
 
 ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=server
+ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=server -e ACCESS_KEY=AKIA5SWO27MOUWJFUSUJ -e SECRET_KEY=BMKuO2g07gL5JFyf+nZQmQ6IklmJZxjvkraGWLz5BbVW
 
 ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=client
