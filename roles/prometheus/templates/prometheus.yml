@@ -17,4 +17,6 @@ scrape_configs:
 
   - job_name: "prometheus"
     static_configs:
-      - targets: ["172.31.84.216:9100"]
+    #this is the target u should talk to
+      - targets: 
+          - "172.31.84.216:9100"
