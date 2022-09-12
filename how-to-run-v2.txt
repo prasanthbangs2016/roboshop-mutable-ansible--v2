@@ -6,11 +6,33 @@ ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-muta
 ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=server -e ACCESS_KEY=AKIA5SWO27MOUWJFUSUJ -e SECRET_KEY=BMKuO2g07gL5JFyf+nZQmQ6IklmJZxjvkraGWLz5BbVW
 
 ===========================================================================================================================================================
+
+
 ansible -i inv-roboshop roboshop-full.yml -e ansible_user=centos -e HOST=CART -e APP_COMPONENT_ROLE=cart -e ansible_password=DevOps321 -e ENV=dev
 
 ansible -i inv-roboshop roboshop-full.yml -e ansible_user=centos -e ansible_password=DevOps321 -e ENV=dev
 
+below are needed to install prometheus node exporter agent installation
+============================================================================
+pip install botocore
+pip install boto3
+
+push
+
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=cart -e HOSTS=CART -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=frontend -e HOSTS=FRONTEND -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=mongodb -e HOSTS=MONGODB -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=catalogue-e HOSTS=CATALOGUE -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=user -e HOSTS=USER -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=redis -e HOSTS=REDIS -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=mysql -e HOSTS=MYSQL -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=shipping -e HOSTS=SHIPPING -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=rabbitmq -e HOSTS=RABBITMQ -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=payment -e HOSTS=PAYMENT -e ENV=dev roboshop.yml
+ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevOps321 -e APP_COMPONENT_ROLE=dispath -e HOSTS=DISPATH -e ENV=dev roboshop.yml
+
 ===========================================================================================================================================================
+pull
 
 ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=frontend -e HOSTS=localhost -e ENV=dev
 
@@ -18,5 +40,19 @@ ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v
 
 ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=catalogue -e HOSTS=localhost -e ENV=dev
 
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=redis -e HOSTS=localhost -e ENV=dev
 
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=user -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=cart -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=mysql -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=shipping -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=rabbitmq -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=payment -e HOSTS=localhost -e ENV=dev
+
+ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=dispatch -e HOSTS=localhost -e ENV=dev
 

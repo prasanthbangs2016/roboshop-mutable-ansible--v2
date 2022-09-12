@@ -30,7 +30,8 @@ scrape_configs:
         filters:
           - name: "tag:Monitor"
             values: ["yes"]
-
+#relabel helps to display by ec2 tag name
+#relabeling is for adding meta info
     relabel_configs:
       - source_labels: [__meta_ec2_tag_Name]
         target_label: "component"
