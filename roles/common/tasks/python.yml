@@ -21,4 +21,12 @@
     name: common
     tasks_from: systemd
 
+- name: Install botocore and boto3 python package
+  ansible.builtin.pip:
+    name: 
+      - botocore
+      - boto3
+
+
+
 
