@@ -1,6 +1,6 @@
 [FRONTEND]
 frontend-dev.roboshop.ppk
-[MONGO]
+[MONGODB]
 mongodb-dev.roboshop.ppk
 [CATALOGUE]
 catalogue-dev.roboshop.ppk
