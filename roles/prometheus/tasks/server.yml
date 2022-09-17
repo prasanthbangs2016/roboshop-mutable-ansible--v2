@@ -22,3 +22,19 @@
     delay: 10 #wait for 30sec
     timeout: 30 #stop waiting after 30sec that is a failure
 
+- name: copy alert manager configuration
+  ansible.builtin.template:
+    src: alertmanager.yml
+    dest: /opt/prometheus/alertmanager.yml
+
+
+- name: Restart alert manager
+  ansible.builtin.systemd:
+    name: alertmanager.yml
+    state: restarted
+
+- name: Wait for alertmanager to start
+  ansible.builtin.wait_for:
+    port: 9093
+    delay: 10 #wait for 30sec
+    timeout: 30 #stop waiting after 30sec that is a failure
