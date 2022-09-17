@@ -3,7 +3,7 @@ ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-muta
 
 ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=client
 
-ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=server -e ACCESS_KEY=AKIA5SWO27MOUWJFUSUJ -e SECRET_KEY=BMKuO2g07gL5JFyf+nZQmQ6IklmJZxjvkraGWLz5BbVW
+ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2.git roboshop.yml  -e HOSTS=localhost -e APP_COMPONENT_ROLE=prometheus -e PROMETHEUS_INSTALL_TYPE=server -e ACCESS_KEY=AKIA5SWO27MOQD32DROV -e SECRET_KEY=BOey4PSw1j5TA6b7PjK281KwRJmB0Q5wIa7zzdJdiFv6
 
 ===========================================================================================================================================================
 
