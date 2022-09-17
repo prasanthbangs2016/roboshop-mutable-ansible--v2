@@ -6,7 +6,7 @@
 
 - name: copy alerts configuration
   ansible.builtin.template:
-    src: alert_rules.yml
+    src: alert-rules.yml
     dest: /opt/prometheus/alert-rules.yml
   notify: Restart prometheus
 
