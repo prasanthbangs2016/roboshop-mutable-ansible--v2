@@ -10,10 +10,12 @@ ansible-pull -i localhost, -U https://github.com/prasanthbangs2016/roboshop-muta
 
 ansible -i inv-roboshop roboshop-full.yml -e ansible_user=centos -e HOST=CART -e APP_COMPONENT_ROLE=cart -e ansible_password=DevOps321 -e ENV=dev
 
-ansible -i inv-roboshop roboshop-full.yml -e ansible_user=centos -e ansible_password=DevOps321 -e ENV=dev
+install prometheus node exporter agent across all the agent in one shot
+==========================================================================
+ansible-playbook -i inv-roboshop roboshop-full.yml -e ansible_user=centos -e ansible_password=DevOps321 -e ENV=dev -e MYSQL_PASSWORD=Roboshop@1 -e RABBITMQ_PASSWORD=roboshop123
 
-below are needed to install prometheus node exporter agent installation
-============================================================================
+below are needed to install prometheus node exporter agent installation(individual component wise)
+=============================================================================================
 pip install botocore
 pip install boto3
 

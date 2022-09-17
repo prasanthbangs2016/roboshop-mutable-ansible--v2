@@ -12,6 +12,7 @@ alerting:
 
 
 rule_files:
+  - alert-rules.yml
 
 # scrape_configs:
 
