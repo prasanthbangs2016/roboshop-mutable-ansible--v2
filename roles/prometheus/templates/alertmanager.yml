@@ -8,7 +8,7 @@ route:
 receivers:
   - name: "email"
     email_configs:
-      - to: "prasanthbangs@gmail.com"      # you@example.com
+      - to: "3103prashanth@gmail.com"      # you@example.com
         from: "3103prashanth@gmail.com"  # alertmanager@example.com
         smarthost: "email-smtp.us-east-1.amazonaws.com:587"
         auth_username: AKIA5SWO27MOUWJFUSUJ
