@@ -30,7 +30,7 @@
 
 - name: Restart alert manager
   ansible.builtin.systemd:
-    name: alertmanager.yml
+    name: alertmanager
     state: restarted
 
 - name: Wait for alertmanager to start

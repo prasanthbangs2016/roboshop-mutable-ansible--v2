@@ -13,6 +13,8 @@ receivers:
         smarthost: "email-smtp.us-east-1.amazonaws.com:587"
         auth_username: AKIA5SWO27MOUWJFUSUJ
         auth_password: BMKuO2g07gL5JFyf+nZQmQ6IklmJZxjvkraGWLz5BbVW
+        #auth_username: {{ACCESS_KEY}}
+        #auth_password: {{SECRET_KEY}}
         require_tls: true
 inhibit_rules:
   - source_match:
