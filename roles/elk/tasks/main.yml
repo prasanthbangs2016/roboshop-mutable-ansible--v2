@@ -1,0 +1,5 @@
+- name: Load logstash
+  ansible.builtin.include_role:
+    name: elk
+    tasks_from: logstash
+  when: LOGSTASH is defined
