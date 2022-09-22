@@ -5,6 +5,7 @@ filebeat.inputs:
     - /var/log/nginx/access.log
   fields:
     component: {{COMPONENT}}
+    
 
 output.logstash:
   hosts: ["logstash.roboshop.ppk:5044"]
