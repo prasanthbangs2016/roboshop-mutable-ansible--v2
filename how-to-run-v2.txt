@@ -36,7 +36,7 @@ ansible-playbook -i inv-roboshop -e ansible_user=centos -e ansible_password=DevO
 ===========================================================================================================================================================
 pull
 
-ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=frontend -e HOSTS=localhost -e ENV=dev
+ansible-pull localhost, -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=frontend -e HOSTS=localhost -e ENV=dev
 
 ansible-pull -U https://github.com/prasanthbangs2016/roboshop-mutable-ansible--v2 roboshop.yml -e APP_COMPONENT_ROLE=mongodb -e HOSTS=localhost -e ENV=dev
 
