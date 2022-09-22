@@ -1,0 +1,17 @@
+- name: Copy file beat yum repo
+  ansible.builtin.template:
+    src: filebeat.repo
+    dest: /etc/yum.repos.d/filebeat.repo
+
+- name: Install filebeat
+  ansibl.builtin.yum:
+    name: filebeat
+    state: installed
+
+- name: Start filebeat
+  ansible.builtin.systemd:
+    name: filebeat
+    state: restarted
+    enabled: yes
+  
+
