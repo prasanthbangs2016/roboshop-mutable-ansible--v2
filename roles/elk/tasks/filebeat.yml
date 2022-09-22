@@ -4,7 +4,7 @@
     dest: /etc/yum.repos.d/filebeat.repo
 
 - name: Install filebeat
-  ansibl.builtin.yum:
+  ansible.builtin.yum:
     name: filebeat
     state: installed
 
