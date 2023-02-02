@@ -1,5 +1,10 @@
+- name: Clean labauto
+  shell: sudo labauto clean
+  
 - name: Set up hostname
   ansible.builtin.shell: set-hostname {{COMPONENT}}
+  
+
 
 - name: Install prometheus node exporter
   ansible.builtin.include_role:
