@@ -1,23 +1,23 @@
-- name: Copy file beat yum repo
-  ansible.builtin.template:
-    src: filebeat.repo
-    dest: /etc/yum.repos.d/filebeat.repo
+# - name: Copy file beat yum repo
+#   ansible.builtin.template:
+#     src: filebeat.repo
+#     dest: /etc/yum.repos.d/filebeat.repo
 
-- name: Install filebeat
-  ansible.builtin.yum:
-    name: filebeat
-    state: installed
+# - name: Install filebeat
+#   ansible.builtin.yum:
+#     name: filebeat
+#     state: installed
 
-- name: copy file beat config
-  ansible.builtin.template:
-    src: filebeat.yml
-    dest: /etc/filebeat/filebeat.yml
+# - name: copy file beat config
+#   ansible.builtin.template:
+#     src: filebeat.yml
+#     dest: /etc/filebeat/filebeat.yml
 
 
-- name: Start filebeat
-  ansible.builtin.systemd:
-    name: filebeat
-    state: restarted
-    enabled: yes
+# - name: Start filebeat
+#   ansible.builtin.systemd:
+#     name: filebeat
+#     state: restarted
+#     enabled: yes
   
 
