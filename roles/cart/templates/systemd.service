@@ -3,7 +3,7 @@
 Description = Cart Service
 [Service]
 User=roboshop
-Environment=MONGO=true
+Environment=DOCUMENTDB=true
 Environment=REDIS_HOST={{ lookup('aws_ssm', 'mutable.elasticache.{{ENV}}.REDIS_HOST', region='us-east-1' ) }}
 Environment=CATALOGUE_HOST={{ lookup('aws_ssm', 'mutable.cart.{{ENV}}.CATALOGUE_HOST', region='us-east-1' ) }}
 Environment=CATALOGUE_PORT=80
